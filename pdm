@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+# The main entrance of the pdm ruby tools
+
+require 'rubygems' # TODO support install as a gem
+
+$: << File.join(File.dirname(__FILE__), ".")
+$: << File.join(File.dirname(__FILE__), "lib")
+
+require 'pdm'
+require 'pdm/runner'
+require "pdm/exceptions"
+
+args = ARGV.clone
+
+begin
+  Pdm::Runner.new.run args
+rescue Pdm::SystemExitException => e
+  exit e.exit_code
+end
+

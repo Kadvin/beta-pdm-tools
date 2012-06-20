@@ -1,0 +1,23 @@
+backtrace: true
+benchmark: true
+database: &dbc
+  --server: 20.0.8.167
+  --database: pdm_analysis
+  --user: root
+  --passwd: kadvinxj
+  --adapter: mysql
+analysis:
+  <<: *dbc
+ftp:
+  --server: 20.0.9.111
+  --port: "2121"
+  --user: server
+  --passwd: server
+telnet:
+  --server: 20.0.9.111
+  --port: "23"
+  --user: administrator
+  --passwd: beta123
+userpane:
+  --server: 20.0.9.111
+  --port: "8020"

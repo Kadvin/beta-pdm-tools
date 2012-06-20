@@ -1,0 +1,149 @@
+{
+    "session" : {
+        "url" : "/mos/#{factor}?session=#{session}"
+    },
+    "request[1]" : {
+        "url": "/mos/#{factor}/properties/UserName?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[2]" : {
+        "url": "/mos/#{factor}/properties/DeviceName?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[3]" : {
+        "url": "/mos/#{factor}/properties/SystemOID?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[4]" : {
+        "url": "/mos/#{factor}/properties/Manufacturer?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[5]" : {
+        "url": "/mos/#{factor}/properties/Location?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[6]" : {
+        "url": "/mos/#{factor}/properties/SystemDescription?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[7]" : {
+        "url": "/mos/#{factor}/properties/DeviceType?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[8]" : {
+        "url": "/mos/#{factor}/properties/IPAddress?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[9]" : {
+        "url": "/mos/#{factor}/properties/Vlans?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[10]" : {
+        "url": "/mos/#{factor}/properties/Interfaces?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[11]" : {
+        "url": "/mos/#{factor}/indicators/TESTCPU?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[12]" : {
+        "url": "/mos/#{factor}/indicators/CPU?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[13]" : {
+        "url": "/mos/#{factor}/indicators/MEM?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[14]" : {
+        "url": "/mos/#{factor}/indicators/SystemUptime?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[15]" : {
+        "url": "/mos/#{factor}/indicators/Interface?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[16]" : {
+        "url": "/mos/#{factor}/indicators/InterfaceScalar?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[17]" : {
+        "url": "/mos/#{factor}/indicators/IPTable?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[18]" : {
+        "url": "/mos/#{factor}/indicators/ARP?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[19]" : {
+        "url": "/mos/#{factor}/indicators/MACAddress?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[20]" : {
+        "url": "/mos/#{factor}/indicators/IPAccounting?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[21]" : {
+        "url": "/mos/#{factor}/indicators/CDP?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[22]" : {
+        "url": "/mos/#{factor}/indicators/HDP?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[23]" : {
+        "url": "/mos/#{factor}/indicators/MIBNextValue?TarOIDs=.1.2.3.6,.1.2.3.7&MaxRepeats=10&burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[24]" : {
+        "url": "/mos/#{factor}/indicators/Route?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[25]" : {
+        "url": "/mos/#{factor}/indicators/Vlan?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[26]" : {
+        "url": "/mos/#{factor}/indicators/RemotePing?Parameter=192.168.8.253&burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[27]" : {
+        "url": "/mos/#{factor}/indicators/SpanningTreeProtocol?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[28]" : {
+        "url": "/mos/#{factor}/indicators/ModuleInfo?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[29]" : {
+        "url": "/mos/#{factor}/indicators/module_status?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[30]" : {
+        "url": "/mos/#{factor}/indicators/module_status?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[31]" : {
+        "url": "/mos/#{factor}/indicators/MIBGetValue?TarOIDs=.1.2.3.4,.1.2.3.5&burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[32]" : {
+        "url": "/mos/#{factor}/indicators/TCP_Connection?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[33]" : {
+        "url": "/mos/#{factor}/indicators/SystemInfo?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[34]" : {
+        "url": "/mos/#{factor}/indicators/MIBTable?TarOID=.1.2.3.4&Columns=1,2,3,4&burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[35]" : {
+        "url": "/mos/#{factor}/indicators/SNMPRWTest?burst=#{burst}",
+        "method" : "PUT"
+    },
+    "request[36]" : {
+        "url": "/mos/#{factor}/indicators/TCPConnectionTest?Ports=80,23,21&burst=#{burst}",
+        "method" : "PUT"
+    }
+}

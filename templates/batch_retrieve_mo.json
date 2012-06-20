@@ -1,0 +1,9 @@
+{
+  "session": {
+    "url": "/favicon.ico?session=#{session}"
+  },
+  "request": {
+    "url": "/mos/#{factor}?retrieve=true&session=#{session}&burst=#{burst}",
+    "method": "PUT"
+  }
+}

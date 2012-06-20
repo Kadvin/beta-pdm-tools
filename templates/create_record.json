@@ -1,0 +1,38 @@
+{
+    "session" : {
+        "url" : "/favicon.ico?session=#{session}"
+    },
+    "request" : {
+        "url": "/record_rules?session=#{session}&burst=#{burst}",
+        "method": "POST",
+        "contents":
+        {
+            "name":"aaaaaaaaaaaaaaa",
+            "description":"this is test",
+            "status":"enable",
+            "creator":"mfk",
+            "source":"btim",
+            "version":1,
+            "managedObject" : "mokey == 'd1a17845-9591-4d63-a454-a9655ac2abf7'",
+            "indicator":{
+                "name":"CPU",
+                "expectedInterval":300000,
+                "arguments":
+
+                {}
+            },
+            "recorder":{
+                "@type":"select"
+            },
+            "notification":{
+                "packagingInterval":3600,
+                "data":[
+                    {
+                        "type":"download",
+                        "destinationName":"NET"
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,70 @@
+PDM Performance Test Tools, abbr as: pdm
+The pdm framework is designed by reference to ruby gems, like gem, it's used by such ways:
+
+pdm [GLOBAL_OPTIONS] COMMAND [OPTIONS] *args
+
+对于如下性能测试任务，可以用pt逐步完成：
+
+一、对某个目标服务器执行一次创建MO的性能压力测试
+1. 先获得某个软件版本(通过ftp)
+      pdm ftp get PATH/TO/RELEASE --to LOCAL/DIR -s FTP_IP -p FTP_PORT --user=ACCOUNT --passwd=PASSWORD
+2. 再部署到某个特定远程服务器上(通过FTP)
+      pdm ftp put LOCAL/DIR/RELEASE --to PATH/TO/DEPLOY -s FTP_IP -p FTP_PORT  --user=ACCOUNT --passwd=PASSWORD
+3. 启动远程服务器(通过telnet)
+      pdm telnet `unzip pdm.zip` -s SERVER_IP -p TELNET_PORT -wd PDM_DEPLOYED_DIR
+      pdm telnet `start pdm.exe` -s SERVER_IP -p TELNET_PORT -wd PDM_DEPLOYED_DIR
+4. 激活相关探针包
+4.1 列出所有的探针包，并仅仅过滤出 identify
+      pdm userpane list probe_packages --filter identify -s SERVER_IP -p SERVER_PORT > PATH/TO/PKG_IDENTIFIERS
+4.2 遍历所有的探针包，执行激活工作
+      pdm userpane activate probe_packages -s SERVER_IP -p SERVER_PORT < PATH/TO/PKG_IDENTIFIERS
+5. 删除所有已经存在的mos
+5.1 列出所有的MOS
+      pdm userpane list mos --filter mokey -s SERVER_IP -p SERVER_PORT > PATH/TO/MO_IDENTIFIERS
+5.2 删除特定MO
+      pdm userpane delete mos -s SERVER_IP -p SERVER_PORT < PATH/TO/MO_IDENTIFIERS
+6. 批量创建MO
+6.1 生成要创建MO的IP的列表
+      pdm httperf ip --number 500 --start 192.168.5.1 > PATH/TO/IPS
+6.2 根据因子和模板文件生成压力测试文件
+      pdm httperf template --sessions 10 --bursts 50 --template create_mo.json < PATH/TO/IPS > PATH/TO/PRESSURE/FILE
+6.3 执行批量创建的压力测试
+      pdm httperf pressure PATH/TO/PRESSURE/FILE -s SERVER_IP -p SERVER_PORT
+7. 分析压力数据
+7.1 获取执行日志
+      pdm ftp get PATH/TO/LOG/1 PATH/TO/LOG/2 --to LOCAL/DIR -s FTP_IP -p FTP_PORT --user=ACCOUNT --passwd=PASSWORD
+7.2 分析执行日志
+      pdm analysis create_mo PATH/TO/LOG/1 PATH/TO/LOG/2 --save-to-db --reset-db --timestamp 10:20:30,000
+7.3 检查日志
+      pdm validate user_tasks --condition "count(0) = 500"          \
+                              --condition "avg(cost) <= 60"         \
+                              --condition "max(cost) < 100"         \
+                              --condition "max(concurrent) > 10"
+
+二、对某个目标服务器执行删除MO的性能压力测试
+1. 列举该服务器所有的MOS
+      pdm userpane list mos --filter mokey -s SERVER_IP -p SERVER_PORT > PATH/TO/FACTORY/FILE
+2. 生成批量删除的压力脚本
+      pdm httperf template --template delete_mo.json --factor PATH/TO/FACTOR/FILE > PATH/TO/PRESSURE/FILE
+3. 执行批量删除的压力测试
+pdm pressure PATH/TO/PRESSURE/FILE -s SERVER_IP -p SERVER_PORT
+4. 获取执行日志
+pdm ftp get PATH/TO/LOG/1 PATH/TO/LOG/2 --to LOCAL/DIR -s FTP_IP -p FTP_PORT --user=ACCOUNT --passwd=PASSWORD
+5. 分析执行日志
+pdm analysis PATH/TO/LOG/1 PATH/TO/LOG/2 --save-to-db --reset-db --timestamp 10:20:30,000
+
+三、对某个目标服务器执行指标采集的性能压力测试
+1. 列举该服务器所有的MOS
+pdm list mos --filter mokey -s SERVER_IP -p SERVER_PORT > MO.KEYS
+2. 生成批量采数的压力脚本
+pdm generate --template sample_mo.json --sessions 10 --bursts 10 --keys MO.KEYS
+3. 执行批量采数的压力测试
+pdm pressure PATH/TO/PRESSURE/FILE -s SERVER_IP -p SERVER_PORT
+4. 获取执行日志
+pdm ftp get PATH/TO/LOG/1 PATH/TO/LOG/2 --to LOCAL/DIR -s FTP_IP -p FTP_PORT --user=ACCOUNT --passwd=PASSWORD
+5. 分析执行日志
+pdm analysis PATH/TO/LOG/1 PATH/TO/LOG/2 --save-to-db --reset-db --timestamp 10:20:30,000
+
+四、对某个服务器进行验收测试，并输出验收报告
+
+pdm accept 20.0.8.138

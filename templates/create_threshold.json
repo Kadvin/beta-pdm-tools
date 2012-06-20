@@ -1,0 +1,151 @@
+{
+    "session" : {
+        "url" : "/favicon.ico?session=#{session}"
+    },
+    "request" : {
+        "url": "/threshold_rules?session=#{session}&burst=#{burst}",
+        "method": "POST",
+        "contents": {
+            "name" : "测试规则-#{factor}",
+            "eventType" : "阈值事件.广域断线",
+            "status" : "enable",
+            "startOn" : "2012-01-10",
+            "stopOn" : "2012-12-31",
+            "description" : "这是我用来做测试的",
+            "creator" : "PDM-PTS-CREATE-THRESHOLD",
+            "source" : "PDM-UP",
+            "version" : 1,
+            "managedObject" : "moKey == \\'#{factor}\\'",
+            "indicator" :
+            {
+                "name" : "RemotePing",
+                "expectedInterval" : 5000,
+                "arguments" :
+                        [
+                            {
+                                "a1" : "executing-host"
+                            },
+                            {
+                                "a2" : 23
+                            },
+                            {
+                                "a2" :
+                                {
+                                    "@type" : "RemotingPingParameter",
+                                    "dstIP" : "10.11.12.13",
+                                    "SentPacketsNum" : 20,
+                                    "SentPacketsSize" : 300,
+                                    "Delay" : 2000,
+                                    "Timeout" : 2000
+                                }
+                            }
+                        ]
+            },
+            "trigger" :
+            {
+                "@type" : "switch",
+                "select" :
+                {
+                    "projection" :
+                    {
+                        "field" : "ProcessMEM",
+                        "function" : "Count"
+                    },
+                    "when" :
+                    {
+                        "field" : "ProcessName",
+                        "operator" : "like",
+                        "value" : "betasoft.pdm.*"
+                    }
+                },
+                "condition" :
+                        [
+                            {
+                                "description" : "描述信息1，可作为事件表述",
+                                "label" : "低",
+                                "operator" : "<",
+                                "value" : "30"
+                            },
+                            {
+                                "description" : "描述信息2，可作为事件表述",
+                                "label" : "中",
+                                "operator" : "<",
+                                "value" : "50"
+                            },
+                            {
+                                "description" : "描述信息3，可作为事件表述",
+                                "label" : "高",
+                                "operator" : "<",
+                                "value" : "80"
+                            }
+                        ]
+            },
+            "notification" :
+            {
+                "repeatCount" : 3,
+                "data" :
+                        [
+                            {
+                                "type" : "poll",
+                                "destinationName" : "BTIM.JMColor",
+                                "description" : "如保留个数等其他信息将在程序的配置中, 而不是存于规则中"
+                            },
+                            {
+                                "type" : "poll",
+                                "destinationName" : "BTIM.Alert"
+                            },
+                            {
+                                "type" : "push",
+                                "destinationName" : "http://127.0.0.1:1099/pushEvent"
+                            },
+                            {
+                                "type" : "jms",
+                                "destinationName" : "Nanri",
+                                "description" : "如jms地址端口等其他信息将在程序的配置中, 而不是存于规则中,暂时不支持"
+                            },
+                            {
+                                "type" : "jms",
+                                "destinationName" : "xxxx",
+                                "description" : "如jms地址端口等其他信息将在程序的配置中, 而不是存于规则中，暂时不支持"
+                            },
+                            {
+                                "type" : "db",
+                                "destinationName" : "yyy",
+                                "description" : "如jdbc的url等其他信息将在程序的配置中, 而不是存于规则中，暂时不支持"
+                            }
+                        ]
+            },
+            "schedulePlan" :
+            {
+                "includes" :
+                        [
+                            {
+                                "times" : "8:30-17:30",
+                                "days_of_week" : "1-5",
+                                "months" : "1,2,3"
+                            },
+                            {
+                                "times" : "9:00-18:00",
+                                "days_of_month" : "1-30",
+                                "months" : "4,5,6,7,8,9,10,11,12"
+                            }
+                        ],
+                "excludes" :
+                        [
+                            {
+                                "days_of_month" : "1-7",
+                                "months" : "10"
+                            },
+                            {
+                                "days_of_week" : "1",
+                                "months" : "1"
+                            },
+                            {
+                                "days_of_month" : "1",
+                                "months" : "5"
+                            }
+                        ]
+            }
+        }
+    }
+}

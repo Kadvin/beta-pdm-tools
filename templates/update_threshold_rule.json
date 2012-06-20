@@ -1,0 +1,57 @@
+{
+  "session": {"url": "/favicon.ico?session=#{session}"},
+
+  "request": {
+    "url": "/threshold_rules/#{factor}?session=#{session}&burst=#{burst}",
+    "method": "PUT",
+
+    "contents": {
+      "name": "networkdevice-cpu-threshold-#{factor}",
+      "description": "networkdevice-cpu-threshold",
+      "eventType": "test",
+      "status": "enable",
+      "creator": "mfk",
+      "source": "btim",
+      "version": 1,
+
+      "indicator": {
+        "name": "CPU",
+        "expectedInterval": 12000,
+        "arguments": null
+      },
+
+      "trigger": {
+        "@type": "switch",
+
+        "condition": [
+          {
+            "label": "medium",
+            "description": "CPU use geater  1%",
+            "operator": ">",
+            "value": "1"
+          },
+          {
+            "label": "high",
+            "description": "CPU use geater 60%",
+            "operator": ">",
+            "value": "60"
+          }
+        ]
+      },
+      
+      "notification": {
+        "repeatCount": 3,
+        "data": [
+          {
+            "type": "poll",
+            "destinationName": "NETYUZHI"
+          },
+          {
+            "type": "push",
+            "destinationName": "http://20.0.9.139:1099/pushEvent"
+          }
+        ]
+      }
+    }
+  }
+}

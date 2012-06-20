@@ -1,0 +1,6 @@
+adapter: mysql
+database: pdm_analysis_test
+host: localhost
+username: root
+password: 
+encoding: utf8

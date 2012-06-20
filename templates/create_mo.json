@@ -1,0 +1,282 @@
+{
+    "session" : {
+        "url" : "/favicon.ico?session=#{session}"
+    },
+    "request" : {
+        "url": "/mos?mo_type=NetworkDevice&retrieve=true&session=#{session}&burst=#{burst}",
+        "method": "POST",
+        "contents": {
+            "endpoint"   : {
+                "Domain" : "BTIM",
+                "IP"     : "#{factor}"
+            },
+            "accesses"   : {
+                "TELNETPARAMETER" : {
+                    "TelnetPort" : 23,
+                    "Password1"  : "",
+                    "Password2"  : ""
+                },
+                "SNMPPARAMETER"   : {
+                    "SecurityName_Set" : "",
+                    "Timeout"          : 1000,
+                    "Retries"          : 3,
+                    "Community_Get"    : "public",
+                    "Community_Set"    : "private",
+                    "PrivPassword_Set" : "",
+                    "Version_Get"      : "SNMPV1",
+                    "AuthPassword_Set" : "",
+                    "AuthPassword_Get" : "",
+                    "Port"             : 161,
+                    "Version_Set"      : "SNMPV1",
+                    "SecurityName_Get" : "",
+                    "PrivPassword_Get" : ""
+                }
+            },
+            "status" : 0,
+            "state"  : "none",
+            "properties" : {
+                "DEVICETYPE" : "sw",
+                "VLANS"      : [
+                    1,
+                    3,
+                    8,
+                    20
+                ],
+                "LOCATION"   : "",
+                "DEVICENAME" : "sw#{factor}",
+                "SYSTEMOID"  : ".1.3.6.1.4.1.25506.1.297",
+                "INTERFACES" : [
+                    {
+                        "ifPhysAddress" : "",
+                        "IFIANAName"    : "",
+                        "ifType"        : 1,
+                        "ifMtu"         : 1500,
+                        "ifIndex"       : 14,
+                        "ifDescr"       : "NULL0",
+                        "ifSpeed"       : 0
+                    },
+                    {
+                        "ifPhysAddress" : "",
+                        "IFIANAName"    : "",
+                        "ifType"        : 24,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 16,
+                        "ifDescr"       : "InLoopBack0",
+                        "ifSpeed"       : 0
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 136,
+                        "ifMtu"         : 1500,
+                        "ifIndex"       : 183,
+                        "ifDescr"       : "Vlan-interface20",
+                        "ifSpeed"       : 0
+                    },
+                    {
+                        "ifPhysAddress" : "",
+                        "IFIANAName"    : "",
+                        "ifType"        : 23,
+                        "ifMtu"         : 1500,
+                        "ifIndex"       : 4227614,
+                        "ifDescr"       : "Aux1/0/0",
+                        "ifSpeed"       : 0
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227626,
+                        "ifDescr"       : "Ethernet1/0/1",
+                        "ifSpeed"       : 100000000
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227634,
+                        "ifDescr"       : "Ethernet1/0/2",
+                        "ifSpeed"       : 100000000
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227642,
+                        "ifDescr"       : "Ethernet1/0/3",
+                        "ifSpeed"       : 100000000
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227650,
+                        "ifDescr"       : "Ethernet1/0/4",
+                        "ifSpeed"       : 100000000
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227658,
+                        "ifDescr"       : "Ethernet1/0/5",
+                        "ifSpeed"       : 100000000
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227666,
+                        "ifDescr"       : "Ethernet1/0/6",
+                        "ifSpeed"       : 100000000
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227674,
+                        "ifDescr"       : "Ethernet1/0/7",
+                        "ifSpeed"       : 100000000
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227682,
+                        "ifDescr"       : "Ethernet1/0/8",
+                        "ifSpeed"       : 100000000
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227690,
+                        "ifDescr"       : "Ethernet1/0/9",
+                        "ifSpeed"       : 100000000
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227698,
+                        "ifDescr"       : "Ethernet1/0/10",
+                        "ifSpeed"       : 100000000
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227706,
+                        "ifDescr"       : "Ethernet1/0/11",
+                        "ifSpeed"       : 100000000
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227714,
+                        "ifDescr"       : "Ethernet1/0/12",
+                        "ifSpeed"       : 0
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227722,
+                        "ifDescr"       : "Ethernet1/0/13",
+                        "ifSpeed"       : 100000000
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227730,
+                        "ifDescr"       : "Ethernet1/0/14",
+                        "ifSpeed"       : 100000000
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227738,
+                        "ifDescr"       : "Ethernet1/0/15",
+                        "ifSpeed"       : 0
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227746,
+                        "ifDescr"       : "Ethernet1/0/16",
+                        "ifSpeed"       : 0
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227754,
+                        "ifDescr"       : "Ethernet1/0/17",
+                        "ifSpeed"       : 0
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227762,
+                        "ifDescr"       : "Ethernet1/0/18",
+                        "ifSpeed"       : 100000000
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227770,
+                        "ifDescr"       : "Ethernet1/0/19",
+                        "ifSpeed"       : 100000000
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227778,
+                        "ifDescr"       : "Ethernet1/0/20",
+                        "ifSpeed"       : 0
+                    },
+                    {
+                        "ifPhysAddress" : "00-23-89-33-37-A0",
+                        "IFIANAName"    : "",
+                        "ifType"        : 6,
+                        "ifMtu"         : 1536,
+                        "ifIndex"       : 4227786,
+                        "ifDescr"       : "Ethernet1/0/21",
+                        "ifSpeed"       : 0
+                    }
+                ],
+                "MANUFACTURER" : "25506",
+                "IPADDRESS"    : [
+                    "#{factor}"
+                ]
+            }
+        }
+    }
+}

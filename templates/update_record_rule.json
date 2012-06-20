@@ -1,0 +1,32 @@
+{
+  "session": {"url": "/favicon.ico?session=#{session}"},
+
+  "request": {
+    "url": "/record_rules/#{factor}?session=#{session}&burst=#{burst}",
+    "method": "PUT",
+
+    "contents": {
+      "status": "enable",
+      "name": "networkdevice-cpu-record-#{factor}",
+      "description": "this_is_test",
+      "creator": "mfk",
+      "source": "btim",
+      "version": 1,
+
+      "indicator": {
+        "name": "CPU",
+        "expectedInterval": 300000,
+        "arguments":{}
+      },
+
+      "recorder": {
+        "@type": "select"
+      },
+
+      "notification": {
+        "packagingInterval": 300,
+        "data": [{"type": "download", "destinationName": "NET"}]
+      }
+    }
+  }
+}
